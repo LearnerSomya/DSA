@@ -17,8 +17,8 @@ class StockSpan {
        for(int i = 0; i < n; i++){
         anew[i] = Integer.parseInt(br.readLine());
        }
-       int[] NextGreaterElement = solve(anew);
-       display(NextGreaterElement);
+       int[] StockSpans = solve(anew);
+       display(StockSpans);
     }
 
     public static int[] solve(int[] arr){
