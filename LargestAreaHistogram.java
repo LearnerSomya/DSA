@@ -1,7 +1,5 @@
 import java.io.*;
 import java.util.*;
-
-import org.w3c.dom.ls.LSException;
 class LargestAreaHistogram {
     public static void main (String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,36 +18,43 @@ class LargestAreaHistogram {
             while(BoundaryStack.size() > 0 && HistogramArray[i] < HistogramArray[BoundaryStack.peek()]){
                 BoundaryStack.pop();
             }
+           
         }
 
         int[] LeftBoundary = new int[HistogramArray.length];
         BoundaryStack = new Stack<>();
         BoundaryStack.push(0);
         LeftBoundary[0] = -1;
-        for(int i = 0; i <= HistogramArray.length; i++){
-            while(BoundaryStack.size() > 0 && HistogramArray[i] < HistogramArray[BoundaryStack.peek()]){
+        for(int j = 0; j < HistogramArray.length; j++){
+            while(BoundaryStack.size() > 0 && HistogramArray[j] < HistogramArray[BoundaryStack.peek()]){
                 BoundaryStack.pop();
             }
 
             if(BoundaryStack.size() == 0){
-                LeftBoundary[i] = -1;
+                LeftBoundary[j] = -1;
             } else {
-                LeftBoundary[i] = BoundaryStack.peek();
+                LeftBoundary[j] = BoundaryStack.peek();
             }
-            BoundaryStack.push(i);
+            BoundaryStack.push(j);
+            
         }
+        
 
         //Area
         int MaxHistogramArea = 0;
         for(int i = 0; i < HistogramArray.length; i++){
-            int width = RightBoundary[i] - LeftBoundary[i] - 1;
-            int area = HistogramArray[i] - width;
+            System.out.println("RB "+RightBoundary[i]);
+            System.out.println("LB "+LeftBoundary[i]);
+            int width = RightBoundary[i] - LeftBoundary[i];
+            System.out.println("width "+width);
+            int area = HistogramArray[i] * width;
+            System.out.println("area" + area);
             if(area > MaxHistogramArea){
                 MaxHistogramArea = area;
             }
         }
 
-        System.out.println(MaxHistogramArea);
+        System.out.println("Max Area" + MaxHistogramArea);
         
     }
 }
