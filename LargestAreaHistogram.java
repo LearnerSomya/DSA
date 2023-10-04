@@ -43,12 +43,12 @@ class LargestAreaHistogram {
         //Area
         int MaxHistogramArea = 0;
         for(int i = 0; i < HistogramArray.length; i++){
-            System.out.println("RB "+RightBoundary[i]);
-            System.out.println("LB "+LeftBoundary[i]);
-            int width = RightBoundary[i] - LeftBoundary[i];
-            System.out.println("width "+width);
+            // System.out.println("RB "+RightBoundary[i]);
+            // System.out.println("LB "+LeftBoundary[i]);
+            int width = RightBoundary[i] - LeftBoundary[i] - 1;
+            // System.out.println("width "+width);
             int area = HistogramArray[i] * width;
-            System.out.println("area" + area);
+            // System.out.println("area" + area);
             if(area > MaxHistogramArea){
                 MaxHistogramArea = area;
             }
