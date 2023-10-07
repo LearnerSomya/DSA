@@ -8,7 +8,13 @@ class InfixEvaluation {
         Stack <Integer> operators = new Stack<>();
         for(int i = 0; i < Expression.length(); i++){
             char ch = Expression.charAt(i);
-            
+            if(ch == '('){
+                operators.push(ch);
+            } else if(Character.isDigit(ch)){
+                operands.push(ch - '0');
+            } else if( ch == '+' || ch == '-' || ch == '*' || ch == '/'){
+                while(operators.size){}
+            }
         }
     }
 }
