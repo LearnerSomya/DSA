@@ -4,7 +4,7 @@ class InfixEvaluation {
     public static void main(String[] args)throws Exception{
         BufferedReader brVal = new BufferedReader(new InputStreamReader(System.in));
         String Expression = brVal.readLine();
-        Scanner scn = new Scanner(System.in);
+        //Scanner scn = new Scanner(System.in);
         //String Expression = scn.next();
         Stack <Integer> operands = new Stack<>();
         Stack <Character> operators = new Stack<>();
