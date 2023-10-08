@@ -13,6 +13,8 @@ class InfixEvaluation {
             if(ch == '('){
                 operators.push(ch);
             } else if(Character.isDigit(ch)){
+                //ascii value of 0 is 48
+                //this ch takes 'enterd number into ascii value'
                 operands.push(ch - '0');//convert char into integer
             } else if( ch == '+' || ch == '-' || ch == '*' || ch == '/'){
                 while(operators.size() > 0 && operators.peek() != '(' && precedence(ch) <= precedence(operators.peek())){
