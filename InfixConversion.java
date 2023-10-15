@@ -16,36 +16,54 @@ class InfixConversion {
                 Prefix.push(ch + "");
             } else if (ch == '+' || ch == '-' || ch == '/' || ch == '*'){
                 while(!Operators.isEmpty() && Operators.peek() != '(' && Operators.size() > 0 && Precedence(ch) <= Precedence(Operators.peek())){ 
-                    char op = Operators.pop();
-                    String PostVal2 = Postfix.pop();
-                    String PostVal1 = Postfix.pop();
-                    String PostVal = PostVal1 + PostVal2 + op;
-                    Postfix.push(PostVal);
+                    Process(Operators, Postfix, Prefix);
+                    // char op = Operators.pop();
+                    // String PostVal2 = Postfix.pop();
+                    // String PostVal1 = Postfix.pop();
+                    // String PostVal = PostVal1 + PostVal2 + op;
+                    // Postfix.push(PostVal);
 
-                    String PreVal2 = Prefix.pop();
-                    String PreVal1 = Prefix.pop();
-                    String PreVal = op + PreVal1 + PreVal2;
-                    Prefix.push(PreVal);
+                    // String PreVal2 = Prefix.pop();
+                    // String PreVal1 = Prefix.pop();
+                    // String PreVal = op + PreVal1 + PreVal2;
+                    // Prefix.push(PreVal);
                 }
                 Operators.push(ch);
             } else if(ch == ')'){
                 while(Operators.peek() != '('){
-                    char op = Operators.pop();
-                    String PostVal2 = Postfix.pop();
-                    String PostVal1 = Postfix.pop();
-                    String PostVal = PostVal1 + PostVal2 + op;
-                    Postfix.push(PostVal);
+                    Process(Operators, Postfix, Prefix);
+                    // char op = Operators.pop();
+                    // String PostVal2 = Postfix.pop();
+                    // String PostVal1 = Postfix.pop();
+                    // String PostVal = PostVal1 + PostVal2 + op;
+                    // Postfix.push(PostVal);
 
-                    String PreVal2 = Prefix.pop();
-                    String PreVal1 = Prefix.pop();
-                    String PreVal = op + PreVal1 + PreVal2;
-                    Prefix.push(PreVal);
+                    // String PreVal2 = Prefix.pop();
+                    // String PreVal1 = Prefix.pop();
+                    // String PreVal = op + PreVal1 + PreVal2;
+                    // Prefix.push(PreVal);
                 }
                 Operators.pop();
             }
         }
         while(Operators.size() > 0){
-            char op = Operators.pop();
+            Process(Operators, Postfix, Prefix);
+        //     char op = Operators.pop();
+        //     String PostVal2 = Postfix.pop();
+        //     String PostVal1 = Postfix.pop();
+        //    String PostVal = PostVal1 + PostVal2 + op;
+        //     Postfix.push(PostVal);
+        //     String PreVal2 = Prefix.pop();
+        //     String PreVal1 = Prefix.pop();
+        //     String PreVal = op + PreVal1 + PreVal2;
+        //     Prefix.push(PreVal);
+        }
+        System.out.println("Postfix " + Postfix.pop());
+        System.out.println("Prefix " + Prefix.pop());
+    }
+
+    public static void Process(Stack<Character> Operators, Stack<String> Postfix, Stack<String> Prefix){
+        char op = Operators.pop();
             String PostVal2 = Postfix.pop();
             String PostVal1 = Postfix.pop();
            String PostVal = PostVal1 + PostVal2 + op;
@@ -54,9 +72,6 @@ class InfixConversion {
             String PreVal1 = Prefix.pop();
             String PreVal = op + PreVal1 + PreVal2;
             Prefix.push(PreVal);
-        }
-        System.out.println("Postfix " + Postfix.pop());
-        System.out.println("Prefix " + Prefix.pop());
     }
 
     public static int Precedence(char op){
