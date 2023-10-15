@@ -11,14 +11,52 @@ class InfixConversion {
             char ch = Expression.charAt(i);
             if(ch == '('){
                 Operators.push(ch);
-            } else if ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <. 'z') || (ch >= 'A' && ch <= 'Z' )){
-
+            } else if ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z' )){
+                Postfix.push(ch + "");
+                Prefix.push(ch + "");
             } else if (ch == '+' || ch == '-' || ch == '/' || ch == '*'){
+                while(!Operators.isEmpty() && Operators.peek() != '(' && Operators.size() > 0 && Precedence(ch) <= Precedence(Operators.peek())){ 
+                    char op = Operators.pop();
+                    String PostVal2 = Postfix.pop();
+                    String PostVal1 = Postfix.pop();
+                    String PostVal = PostVal1 + PostVal2 + op;
+                    Postfix.push(PostVal);
 
+                    String PreVal2 = Prefix.pop();
+                    String PreVal1 = Prefix.pop();
+                    String PreVal = op + PreVal1 + PreVal2;
+                    Prefix.push(PreVal);
+                }
+                Operators.push(ch);
             } else if(ch == ')'){
+                while(Operators.peek() != '('){
+                    char op = Operators.pop();
+                    String PostVal2 = Postfix.pop();
+                    String PostVal1 = Postfix.pop();
+                    String PostVal = PostVal1 + PostVal2 + op;
+                    Postfix.push(PostVal);
 
+                    String PreVal2 = Prefix.pop();
+                    String PreVal1 = Prefix.pop();
+                    String PreVal = op + PreVal1 + PreVal2;
+                    Prefix.push(PreVal);
+                }
+                Operators.pop();
             }
         }
+        while(Operators.size() > 0){
+            char op = Operators.pop();
+            String PostVal2 = Postfix.pop();
+            String PostVal1 = Postfix.pop();
+           String PostVal = PostVal1 + PostVal2 + op;
+            Postfix.push(PostVal);
+            String PreVal2 = Prefix.pop();
+            String PreVal1 = Prefix.pop();
+            String PreVal = op + PreVal1 + PreVal2;
+            Prefix.push(PreVal);
+        }
+        System.out.println("Postfix " + Postfix.pop());
+        System.out.println("Prefix " + Prefix.pop());
     }
 
     public static int Precedence(char op){
