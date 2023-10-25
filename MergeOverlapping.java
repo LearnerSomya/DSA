@@ -5,6 +5,7 @@ class MergeOverlapping {
         BufferedReader brVal = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter count of intervals you want to enter");
         int num = Integer.parseInt(brVal.readLine());
+        //num creates rows and 2 creats coloums
         int[][] arr = new int[num][2];
 
         for(int j = 0; j < num; j++){
@@ -18,6 +19,7 @@ class MergeOverlapping {
     }
 
     public static void MergeOverlappingIntervals(int[][] arr){
+        //This Pair[] here we made object "pairs" for class Pair
         Pair[] pairs = new Pair[arr.length];
         for (int i = 0; i < arr.length; i++ ){
             pairs[i] = new Pair(arr[i][0], arr[i][1]);
@@ -29,10 +31,10 @@ class MergeOverlapping {
                 startTime.push(pairs[i]);
             } else{
                 Pair top = startTime.peek();
-                Pair curr = pairs[i];
+                //Pair curr = pairs[i];
 
-                if(curr.startTime > top.endTime){
-                    startTime.push(curr);
+                if(pairs[i].startTime > top.endTime){
+                    startTime.push(pairs[i]);
                 } else{
                     top.endTime = Math.max(top.endTime, pairs[i].endTime);
                 }
