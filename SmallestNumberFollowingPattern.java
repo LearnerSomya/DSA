@@ -21,10 +21,10 @@ class SmallestNumberFollowingPattern {
                 }
             }
         }
-        
+
         NumberSt.push(num);
         while(NumberSt.size() > 0){
                     System.out.println(NumberSt.pop());
-                }
+        }
     }
 }
