@@ -1,3 +1,5 @@
+//in Dynamic Stack we will increase the size of stack when extra value is being added
+//basiclly will increase the size of stack 
 import java.io.*;
 import java.util.*;
 class BuildDynamicStack{
@@ -29,6 +31,6 @@ class BuildDynamicStack{
         }
     }
     public static class DynamicStack{
-        
+
     }
 }
