@@ -35,7 +35,7 @@ class BuildDynamicStack{
         int[] data;
         int tos;
         //Top Of Stack
-        public CustomStack(int cap){
+        public DynamicStack(int cap){
             data = new int[cap];
             tos = -1;
         }
@@ -54,7 +54,13 @@ class BuildDynamicStack{
 
         void push(int val){
             if(tos == data.length - 1){
-                System.out.println("Stack Overflow");
+                int[] ndata = new int[2 * data.length];
+                for (int i = 0; i < data.length; i++){
+                    ndata[i] = data[i];
+                }
+                data = ndata;
+                tos++;
+                data[tos] = val;
             } else {
                 tos++;
                 data[tos] = val;
@@ -78,6 +84,6 @@ class BuildDynamicStack{
             } else{
                 return data[tos];
             }
-        }
+        } 
     }
 }
