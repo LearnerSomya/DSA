@@ -10,8 +10,7 @@ class IntroducationToQueue {
         System.out.println(que);
         que.add(30);
         System.out.println(que);
-        que.peek();
-        System.out.println(que);
+        
 
         System.out.println(que.remove());
         System.out.println(que);
