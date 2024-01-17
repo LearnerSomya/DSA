@@ -1,22 +1,33 @@
 import java.io.*;
 import java.util.*;
 class QueueToStackPopEfficient {
-    public static void main(String[] args) {
-        Scanner scn = new Scanner( System.in);
-        Stack<Integer> st = new Stack<>();
+    public static void main(String[] args) throws Exception {
+        BufferedReader brVal = new BufferedReader(new InputStreamReader(System.in));
         QueueToStack queueToStack = new QueueToStack();
-        int num = scn.nextInt();
-        while(num != -1){
-            st.push(num);
-            num = scn.nextInt();
-        }
-
-        while (queueToStack.size() > 0) {
-            System.out.println(queueToStack.pop());
+        String str = brVal.readLine();
+        while(str.equals("quit") == false){
+            if(str.startsWith("push")){
+                int val = Integer.parseInt(str.split(" ")[1]);
+                queueToStack.push(val);
+            } else if(str.startsWith("pop")){
+                int val = queueToStack.pop();
+                if(val != -1){
+                    System.out.println(val);
+                }
+            } else if(str.startsWith("top")){
+                int val = queueToStack.top();
+                if(val != -1){
+                    System.out.println(val);
+                }
+            } else if(str.startsWith("size")){
+                System.out.println(queueToStack.size());
+            } 
+            str = brVal.readLine();
         }
     }
 
     public static class QueueToStack{
+        Stack<Integer> st = new Stack<>();
         Queue<Integer> MainQueue;
         Queue<Integer> HelpingQueue;
 
