@@ -3,6 +3,7 @@ import java.io.*;
 class BuildNormalQueue {
     public static void main(String [] args) throws Exception {
         BufferedReader brVal = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter size of queue");
         int num = Integer.parseInt(brVal.readLine());
         CustomQueue qu = new CustomQueue(num);
 
